@@ -1,0 +1,713 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "required": ["appId"],
+  "properties": {
+    "appId": {
+      "type": "string",
+      "description": "Bundle ID / Application ID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the flow"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the flow"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Tags for organizing flows"
+    },
+    "env": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Environment variables"
+    }
+  },
+  "items": {
+    "oneOf": [
+      { "$ref": "#/definitions/launchApp" },
+      { "$ref": "#/definitions/tapOn" },
+      { "$ref": "#/definitions/longPressOn" },
+      { "$ref": "#/definitions/assertVisible" },
+      { "$ref": "#/definitions/assertNotVisible" },
+      { "$ref": "#/definitions/assertTrue" },
+      { "$ref": "#/definitions/assertFalse" },
+      { "$ref": "#/definitions/inputText" },
+      { "$ref": "#/definitions/clearInput" },
+      { "$ref": "#/definitions/eraseText" },
+      { "$ref": "#/definitions/scroll" },
+      { "$ref": "#/definitions/swipe" },
+      { "$ref": "#/definitions/pressKey" },
+      { "$ref": "#/definitions/hideKeyboard" },
+      { "$ref": "#/definitions/waitForAnimationToEnd" },
+      { "$ref": "#/definitions/waitForVisible" },
+      { "$ref": "#/definitions/waitForNotVisible" },
+      { "$ref": "#/definitions/runScript" },
+      { "$ref": "#/definitions/runFlow" },
+      { "$ref": "#/definitions/takeScreenshot" },
+      { "$ref": "#/definitions/openLink" },
+      { "$ref": "#/definitions/back" },
+      { "$ref": "#/definitions/stopApp" },
+      { "$ref": "#/definitions/runCommand" },
+      { "$ref": "#/definitions/copyTextFrom" },
+      { "$ref": "#/definitions/pasteText" },
+      { "$ref": "#/definitions/extendState" },
+      { "$ref": "#/definitions/assertThat" },
+      { "$ref": "#/definitions/evalScript" },
+      { "$ref": "#/definitions/scrollUntilVisible" },
+      { "$ref": "#/definitions/scrollToIndex" },
+      { "$ref": "#/definitions/scrollUntil" },
+      { "$ref": "#/definitions/conditional" },
+      { "$ref": "#/definitions/repeat" }
+    ]
+  },
+  "definitions": {
+    "launchApp": {
+      "type": "object",
+      "properties": {
+        "launchApp": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "appId": { "type": "string" },
+                "clearState": { "type": "boolean" },
+                "clearKeychain": { "type": "boolean" },
+                "stopApp": { "type": "boolean" },
+                "arguments": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["launchApp"]
+    },
+    "tapOn": {
+      "type": "object",
+      "properties": {
+        "tapOn": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "text": { "type": "string" },
+                "index": { "type": "number" },
+                "point": {
+                  "type": "object",
+                  "properties": {
+                    "x": { "type": "number" },
+                    "y": { "type": "number" }
+                  }
+                },
+                "offset": {
+                  "type": "object",
+                  "properties": {
+                    "x": { "type": "number" },
+                    "y": { "type": "number" }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["tapOn"]
+    },
+    "longPressOn": {
+      "type": "object",
+      "properties": {
+        "longPressOn": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "text": { "type": "string" },
+                "index": { "type": "number" },
+                "duration": { "type": "number" }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["longPressOn"]
+    },
+    "assertVisible": {
+      "type": "object",
+      "properties": {
+        "assertVisible": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "text": { "type": "string" },
+                "index": { "type": "number" },
+                "timeout": { "type": "number" }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["assertVisible"]
+    },
+    "assertNotVisible": {
+      "type": "object",
+      "properties": {
+        "assertNotVisible": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "text": { "type": "string" },
+                "index": { "type": "number" },
+                "timeout": { "type": "number" }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["assertNotVisible"]
+    },
+    "assertTrue": {
+      "type": "object",
+      "properties": {
+        "assertTrue": {
+          "type": "string"
+        }
+      },
+      "required": ["assertTrue"]
+    },
+    "assertFalse": {
+      "type": "object",
+      "properties": {
+        "assertFalse": {
+          "type": "string"
+        }
+      },
+      "required": ["assertFalse"]
+    },
+    "inputText": {
+      "type": "object",
+      "properties": {
+        "inputText": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "text": { "type": "string" },
+                "id": { "type": "string" },
+                "index": { "type": "number" }
+              },
+              "required": ["text"]
+            }
+          ]
+        }
+      },
+      "required": ["inputText"]
+    },
+    "clearInput": {
+      "type": "object",
+      "properties": {
+        "clearInput": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "index": { "type": "number" }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["clearInput"]
+    },
+    "eraseText": {
+      "type": "object",
+      "properties": {
+        "eraseText": {
+          "oneOf": [
+            { "type": "number" },
+            {
+              "type": "object",
+              "properties": {
+                "characters": { "type": "number" },
+                "id": { "type": "string" },
+                "index": { "type": "number" }
+              },
+              "required": ["characters"]
+            }
+          ]
+        }
+      },
+      "required": ["eraseText"]
+    },
+    "scroll": {
+      "type": "object",
+      "properties": {
+        "scroll": {
+          "type": "object",
+          "properties": {
+            "direction": {
+              "type": "string",
+              "enum": ["UP", "DOWN", "LEFT", "RIGHT"]
+            },
+            "duration": { "type": "number" },
+            "speed": { "type": "number" },
+            "distance": { "type": "number" }
+          },
+          "required": ["direction"]
+        }
+      },
+      "required": ["scroll"]
+    },
+    "swipe": {
+      "type": "object",
+      "properties": {
+        "swipe": {
+          "type": "object",
+          "properties": {
+            "direction": {
+              "type": "string",
+              "enum": ["UP", "DOWN", "LEFT", "RIGHT"]
+            },
+            "duration": { "type": "number" },
+            "speed": { "type": "number" },
+            "start": {
+              "type": "object",
+              "properties": {
+                "x": { "type": "number" },
+                "y": { "type": "number" }
+              }
+            },
+            "end": {
+              "type": "object",
+              "properties": {
+                "x": { "type": "number" },
+                "y": { "type": "number" }
+              }
+            }
+          },
+          "required": ["direction"]
+        }
+      },
+      "required": ["swipe"]
+    },
+    "pressKey": {
+      "type": "object",
+      "properties": {
+        "pressKey": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "key": { "type": "string" },
+                "times": { "type": "number" }
+              },
+              "required": ["key"]
+            }
+          ]
+        }
+      },
+      "required": ["pressKey"]
+    },
+    "hideKeyboard": {
+      "type": "object",
+      "properties": {
+        "hideKeyboard": {
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "object" }
+          ]
+        }
+      },
+      "required": ["hideKeyboard"]
+    },
+    "waitForAnimationToEnd": {
+      "type": "object",
+      "properties": {
+        "waitForAnimationToEnd": {
+          "oneOf": [
+            { "type": "boolean" },
+            {
+              "type": "object",
+              "properties": {
+                "timeout": { "type": "number" }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["waitForAnimationToEnd"]
+    },
+    "waitForVisible": {
+      "type": "object",
+      "properties": {
+        "waitForVisible": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "text": { "type": "string" },
+                "index": { "type": "number" },
+                "timeout": { "type": "number" }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["waitForVisible"]
+    },
+    "waitForNotVisible": {
+      "type": "object",
+      "properties": {
+        "waitForNotVisible": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "text": { "type": "string" },
+                "index": { "type": "number" },
+                "timeout": { "type": "number" }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["waitForNotVisible"]
+    },
+    "runScript": {
+      "type": "object",
+      "properties": {
+        "runScript": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "script": { "type": "string" },
+                "env": {
+                  "type": "object",
+                  "additionalProperties": { "type": "string" }
+                }
+              },
+              "required": ["script"]
+            }
+          ]
+        }
+      },
+      "required": ["runScript"]
+    },
+    "runFlow": {
+      "type": "object",
+      "properties": {
+        "runFlow": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "flow": { "type": "string" },
+                "env": {
+                  "type": "object",
+                  "additionalProperties": { "type": "string" }
+                },
+                "with": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              },
+              "required": ["flow"]
+            }
+          ]
+        }
+      },
+      "required": ["runFlow"]
+    },
+    "takeScreenshot": {
+      "type": "object",
+      "properties": {
+        "takeScreenshot": {
+          "oneOf": [
+            { "type": "string" },
+            { "type": "boolean" },
+            {
+              "type": "object",
+              "properties": {
+                "name": { "type": "string" },
+                "fullPage": { "type": "boolean" }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["takeScreenshot"]
+    },
+    "openLink": {
+      "type": "object",
+      "properties": {
+        "openLink": {
+          "type": "string"
+        }
+      },
+      "required": ["openLink"]
+    },
+    "back": {
+      "type": "object",
+      "properties": {
+        "back": {
+          "oneOf": [
+            { "type": "boolean" },
+            { "type": "object" }
+          ]
+        }
+      },
+      "required": ["back"]
+    },
+    "stopApp": {
+      "type": "object",
+      "properties": {
+        "stopApp": {
+          "oneOf": [
+            { "type": "boolean" },
+            {
+              "type": "object",
+              "properties": {
+                "appId": { "type": "string" }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["stopApp"]
+    },
+    "runCommand": {
+      "type": "object",
+      "properties": {
+        "runCommand": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "command": { "type": "string" },
+                "env": {
+                  "type": "object",
+                  "additionalProperties": { "type": "string" }
+                }
+              },
+              "required": ["command"]
+            }
+          ]
+        }
+      },
+      "required": ["runCommand"]
+    },
+    "copyTextFrom": {
+      "type": "object",
+      "properties": {
+        "copyTextFrom": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "text": { "type": "string" },
+                "index": { "type": "number" }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["copyTextFrom"]
+    },
+    "pasteText": {
+      "type": "object",
+      "properties": {
+        "pasteText": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "text": { "type": "string" },
+                "id": { "type": "string" },
+                "index": { "type": "number" }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["pasteText"]
+    },
+    "extendState": {
+      "type": "object",
+      "properties": {
+        "extendState": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      },
+      "required": ["extendState"]
+    },
+    "assertThat": {
+      "type": "object",
+      "properties": {
+        "assertThat": {
+          "type": "object",
+          "properties": {
+            "expression": { "type": "string" },
+            "timeout": { "type": "number" }
+          },
+          "required": ["expression"]
+        }
+      },
+      "required": ["assertThat"]
+    },
+    "evalScript": {
+      "type": "object",
+      "properties": {
+        "evalScript": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "script": { "type": "string" },
+                "save": { "type": "string" }
+              },
+              "required": ["script"]
+            }
+          ]
+        }
+      },
+      "required": ["evalScript"]
+    },
+    "scrollUntilVisible": {
+      "type": "object",
+      "properties": {
+        "scrollUntilVisible": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "text": { "type": "string" },
+                "index": { "type": "number" },
+                "direction": {
+                  "type": "string",
+                  "enum": ["UP", "DOWN", "LEFT", "RIGHT"]
+                },
+                "timeout": { "type": "number" },
+                "maxScrolls": { "type": "number" }
+              }
+            }
+          ]
+        }
+      },
+      "required": ["scrollUntilVisible"]
+    },
+    "scrollToIndex": {
+      "type": "object",
+      "properties": {
+        "scrollToIndex": {
+          "type": "object",
+          "properties": {
+            "index": { "type": "number" },
+            "direction": {
+              "type": "string",
+              "enum": ["UP", "DOWN", "LEFT", "RIGHT"]
+            }
+          },
+          "required": ["index"]
+        }
+      },
+      "required": ["scrollToIndex"]
+    },
+    "scrollUntil": {
+      "type": "object",
+      "properties": {
+        "scrollUntil": {
+          "type": "object",
+          "properties": {
+            "expression": { "type": "string" },
+            "direction": {
+              "type": "string",
+              "enum": ["UP", "DOWN", "LEFT", "RIGHT"]
+            },
+            "timeout": { "type": "number" },
+            "maxScrolls": { "type": "number" }
+          },
+          "required": ["expression"]
+        }
+      },
+      "required": ["scrollUntil"]
+    },
+    "conditional": {
+      "type": "object",
+      "properties": {
+        "conditional": {
+          "type": "object",
+          "properties": {
+            "expression": { "type": "string" },
+            "ifTrue": {
+              "type": "array",
+              "items": { "$ref": "#/items" }
+            },
+            "ifFalse": {
+              "type": "array",
+              "items": { "$ref": "#/items" }
+            }
+          },
+          "required": ["expression"]
+        }
+      },
+      "required": ["conditional"]
+    },
+    "repeat": {
+      "type": "object",
+      "properties": {
+        "repeat": {
+          "type": "object",
+          "properties": {
+            "times": { "type": "number" },
+            "while": { "type": "string" },
+            "commands": {
+              "type": "array",
+              "items": { "$ref": "#/items" }
+            }
+          }
+        }
+      },
+      "required": ["repeat"]
+    }
+  }
+}
+

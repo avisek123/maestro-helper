@@ -1,0 +1,35 @@
+appId: "com.example.app"
+name: "Maestro Helper Extension Test Flow"
+description: "Test flow for validating Maestro Helper extension features including snippets, hover documentation, and schema validation"
+tags:
+  - test
+  - local
+env:
+  TEST_VAR: "test_value"
+---
+# ============================================
+# LOCAL TESTING CHECKLIST
+# ============================================
+# 
+# 1. SNIPPETS TEST:
+#    - Delete the lines below and type "ta" → should expand to tapOn
+#    - Type "av" → should expand to assertVisible
+#    - Type "la" → should expand to launchApp
+#    - Type "it" → should expand to inputText
+#    - Type "sc" → should expand to scroll
+#    - Type "sw" → should expand to swipe
+#
+# 2. HOVER DOCUMENTATION TEST:
+#    - Hover over "tapOn" below → should show documentation
+#    - Hover over "assertVisible" → should show documentation
+#    - Hover over "launchApp" → should show documentation
+#
+# 3. SCHEMA VALIDATION TEST:
+#    - Try adding invalid property → should show error
+#    - Type valid actions → should have autocomplete
+#
+# ============================================
+
+# Test area - delete and type snippets here:
+# Type "ta" here:
+

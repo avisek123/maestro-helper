@@ -1,0 +1,353 @@
+{
+  "tapOn": {
+    "prefix": ["ta", "tap"],
+    "body": [
+      "- tapOn:",
+      "    id: \"$1\""
+    ],
+    "description": "Tap on an element by testID"
+  },
+  "tapOnText": {
+    "prefix": ["tat", "taptext"],
+    "body": [
+      "- tapOn:",
+      "    text: \"$1\""
+    ],
+    "description": "Tap on an element by text"
+  },
+  "assertVisible": {
+    "prefix": ["av"],
+    "body": [
+      "- assertVisible:",
+      "    id: \"$1\""
+    ],
+    "description": "Assert element is visible"
+  },
+  "assertVisibleText": {
+    "prefix": ["avt"],
+    "body": [
+      "- assertVisible:",
+      "    text: \"$1\""
+    ],
+    "description": "Assert element is visible by text"
+  },
+  "assertNotVisible": {
+    "prefix": ["anv"],
+    "body": [
+      "- assertNotVisible:",
+      "    id: \"$1\""
+    ],
+    "description": "Assert element is not visible"
+  },
+  "launchApp": {
+    "prefix": ["la", "launch"],
+    "body": [
+      "- launchApp:",
+      "    appId: \"$1\""
+    ],
+    "description": "Launch app with appId"
+  },
+  "launchAppSimple": {
+    "prefix": ["las"],
+    "body": [
+      "- launchApp: \"$1\""
+    ],
+    "description": "Launch app (simple string format)"
+  },
+  "inputText": {
+    "prefix": ["it", "input"],
+    "body": [
+      "- inputText:",
+      "    text: \"$1\"",
+      "    id: \"$2\""
+    ],
+    "description": "Input text into a field"
+  },
+  "inputTextSimple": {
+    "prefix": ["its"],
+    "body": [
+      "- inputText: \"$1\""
+    ],
+    "description": "Input text (simple format)"
+  },
+  "clearInput": {
+    "prefix": ["ci", "clear"],
+    "body": [
+      "- clearInput:",
+      "    id: \"$1\""
+    ],
+    "description": "Clear input field"
+  },
+  "eraseText": {
+    "prefix": ["et", "erase"],
+    "body": [
+      "- eraseText:",
+      "    characters: $1"
+    ],
+    "description": "Erase text characters"
+  },
+  "scroll": {
+    "prefix": ["sc", "scroll"],
+    "body": [
+      "- scroll:",
+      "    direction: $1"
+    ],
+    "description": "Scroll in a direction (UP/DOWN/LEFT/RIGHT)"
+  },
+  "scrollDown": {
+    "prefix": ["scd"],
+    "body": [
+      "- scroll:",
+      "    direction: DOWN"
+    ],
+    "description": "Scroll down"
+  },
+  "scrollUp": {
+    "prefix": ["scu"],
+    "body": [
+      "- scroll:",
+      "    direction: UP"
+    ],
+    "description": "Scroll up"
+  },
+  "swipe": {
+    "prefix": ["sw", "swipe"],
+    "body": [
+      "- swipe:",
+      "    direction: $1"
+    ],
+    "description": "Swipe in a direction"
+  },
+  "longPressOn": {
+    "prefix": ["lpo", "longpress"],
+    "body": [
+      "- longPressOn:",
+      "    id: \"$1\""
+    ],
+    "description": "Long press on an element"
+  },
+  "waitForVisible": {
+    "prefix": ["wfv", "waitvisible"],
+    "body": [
+      "- waitForVisible:",
+      "    id: \"$1\"",
+      "    timeout: $2"
+    ],
+    "description": "Wait for element to be visible"
+  },
+  "waitForNotVisible": {
+    "prefix": ["wfnn", "waitnotvisible"],
+    "body": [
+      "- waitForNotVisible:",
+      "    id: \"$1\"",
+      "    timeout: $2"
+    ],
+    "description": "Wait for element to not be visible"
+  },
+  "waitForAnimationToEnd": {
+    "prefix": ["wfae", "waitanimation"],
+    "body": [
+      "- waitForAnimationToEnd:"
+    ],
+    "description": "Wait for animation to end"
+  },
+  "pressKey": {
+    "prefix": ["pk", "presskey"],
+    "body": [
+      "- pressKey: \"$1\""
+    ],
+    "description": "Press a key"
+  },
+  "pressKeyEnter": {
+    "prefix": ["pke"],
+    "body": [
+      "- pressKey: Enter"
+    ],
+    "description": "Press Enter key"
+  },
+  "hideKeyboard": {
+    "prefix": ["hk", "hidekeyboard"],
+    "body": [
+      "- hideKeyboard:"
+    ],
+    "description": "Hide keyboard"
+  },
+  "back": {
+    "prefix": ["ba", "back"],
+    "body": [
+      "- back:"
+    ],
+    "description": "Press back button"
+  },
+  "stopApp": {
+    "prefix": ["sa", "stop"],
+    "body": [
+      "- stopApp:"
+    ],
+    "description": "Stop the app"
+  },
+  "takeScreenshot": {
+    "prefix": ["ts", "screenshot"],
+    "body": [
+      "- takeScreenshot: \"$1\""
+    ],
+    "description": "Take a screenshot"
+  },
+  "runFlow": {
+    "prefix": ["rf", "runflow"],
+    "body": [
+      "- runFlow:",
+      "    flow: \"$1\""
+    ],
+    "description": "Run another flow"
+  },
+  "runFlowWithEnv": {
+    "prefix": ["rfe"],
+    "body": [
+      "- runFlow:",
+      "    flow: \"$1\"",
+      "    env:",
+      "      $2: \"$3\""
+    ],
+    "description": "Run flow with environment variables"
+  },
+  "runScript": {
+    "prefix": ["rs", "runscript"],
+    "body": [
+      "- runScript:",
+      "    script: \"$1\""
+    ],
+    "description": "Run a script"
+  },
+  "openLink": {
+    "prefix": ["ol", "openlink"],
+    "body": [
+      "- openLink: \"$1\""
+    ],
+    "description": "Open a link"
+  },
+  "assertTrue": {
+    "prefix": ["at", "asserttrue"],
+    "body": [
+      "- assertTrue: \"$1\""
+    ],
+    "description": "Assert expression is true"
+  },
+  "assertFalse": {
+    "prefix": ["af", "assertfalse"],
+    "body": [
+      "- assertFalse: \"$1\""
+    ],
+    "description": "Assert expression is false"
+  },
+  "assertThat": {
+    "prefix": ["ath"],
+    "body": [
+      "- assertThat:",
+      "    expression: \"$1\""
+    ],
+    "description": "Assert that expression"
+  },
+  "scrollUntilVisible": {
+    "prefix": ["suv", "scrolluntil"],
+    "body": [
+      "- scrollUntilVisible:",
+      "    id: \"$1\"",
+      "    direction: $2"
+    ],
+    "description": "Scroll until element is visible"
+  },
+  "scrollToIndex": {
+    "prefix": ["sti"],
+    "body": [
+      "- scrollToIndex:",
+      "    index: $1",
+      "    direction: $2"
+    ],
+    "description": "Scroll to index"
+  },
+  "copyTextFrom": {
+    "prefix": ["ctf", "copytext"],
+    "body": [
+      "- copyTextFrom:",
+      "    id: \"$1\""
+    ],
+    "description": "Copy text from element"
+  },
+  "pasteText": {
+    "prefix": ["pt", "paste"],
+    "body": [
+      "- pasteText:",
+      "    text: \"$1\""
+    ],
+    "description": "Paste text"
+  },
+  "evalScript": {
+    "prefix": ["es", "evalscript"],
+    "body": [
+      "- evalScript:",
+      "    script: \"$1\"",
+      "    save: \"$2\""
+    ],
+    "description": "Evaluate script and save result"
+  },
+  "extendState": {
+    "prefix": ["exs", "extendstate"],
+    "body": [
+      "- extendState:",
+      "    $1: \"$2\""
+    ],
+    "description": "Extend state with variables"
+  },
+  "conditional": {
+    "prefix": ["if", "conditional"],
+    "body": [
+      "- conditional:",
+      "    expression: \"$1\"",
+      "    ifTrue:",
+      "      - $2",
+      "    ifFalse:",
+      "      - $3"
+    ],
+    "description": "Conditional logic"
+  },
+  "repeat": {
+    "prefix": ["rep", "repeat"],
+    "body": [
+      "- repeat:",
+      "    times: $1",
+      "    commands:",
+      "      - $2"
+    ],
+    "description": "Repeat commands"
+  },
+  "repeatWhile": {
+    "prefix": ["repw"],
+    "body": [
+      "- repeat:",
+      "    while: \"$1\"",
+      "    commands:",
+      "      - $2"
+    ],
+    "description": "Repeat while condition is true"
+  },
+  "runCommand": {
+    "prefix": ["rc", "runcommand"],
+    "body": [
+      "- runCommand:",
+      "    command: \"$1\""
+    ],
+    "description": "Run shell command"
+  },
+  "maestroFlowHeader": {
+    "prefix": ["mfh", "maestro"],
+    "body": [
+      "appId: \"$1\"",
+      "name: \"$2\"",
+      "---",
+      "$3"
+    ],
+    "description": "Maestro flow header with appId and name"
+  }
+}
+
