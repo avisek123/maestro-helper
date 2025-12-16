@@ -31,7 +31,6 @@ Maestro YAML autocomplete, validation & snippets for Visual Studio Code.
   - `cond` → `conditional`
   - `rep` → `repeat`
   - `ext` → `extendState`
-  
 - **Supported Commands**: All Maestro commands with autocomplete and hover documentation
   - **Interactions**:
     - `tapOn`
@@ -95,6 +94,7 @@ This extension uses the `.maestro.yaml` and `.maestro.yml` file extensions (inst
 - **Prevents Extension Conflicts**: By using `.maestro.yaml`, we ensure that this extension only activates for Maestro-specific files, avoiding interference with other YAML-based tools and configurations (Docker Compose, Kubernetes, CI/CD configs, etc.)
 
 - **Avoids Hijacking All YAML Files**: Using generic `.yaml` or `.yml` extensions would cause this extension to activate for **all** YAML files in your workspace, potentially:
+
   - Overriding language modes for non-Maestro YAML files
   - Providing incorrect autocomplete suggestions
   - Showing irrelevant hover documentation
@@ -108,7 +108,6 @@ This extension uses the `.maestro.yaml` and `.maestro.yml` file extensions (inst
 
 - `.maestro.yaml` - Recommended for Maestro flow files
 - `.maestro.yml` - Alternative short extension
-
 
 ## Requirements
 
@@ -132,21 +131,12 @@ None at this time.
 
 ## Release Notes
 
-### 0.0.2
+### 0.0.8
 
-- Updated to use `.maestro.yaml` and `.maestro.yml` extensions (prevents hijacking all YAML files)
-- Enhanced README with comprehensive command list
-- Fixed schema validation to only apply to Maestro-specific files
-- Added documentation explaining best practices for file extensions
-
-### 0.0.1
-
-Initial release of Maestro Helper:
-- Maestro YAML language support
-- Code snippets for common actions
-- Hover documentation for all actions
-- JSON schema validation
-- IntelliSense autocomplete
+- **Fixed**: Autocomplete now works when language mode is set to "YAML" (no need to manually switch)
+- **Changed**: Maestro files (`.maestro.yaml`, `.maestro.yml`, `.flow`) now always display as "YAML" in the language selector
+- **Improved**: Removed custom "maestro" language registration - all files are now treated as YAML with Maestro-specific features
+- **Fixed**: Completion provider and hover documentation now work seamlessly regardless of language mode selection
 
 ---
 

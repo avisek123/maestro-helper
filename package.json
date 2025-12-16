@@ -16,28 +16,26 @@
   ],
   "main": "./out/extension.js",
   "activationEvents": [
-    "onLanguage:maestro",
     "onLanguage:yaml"
   ],
   "contributes": {
-    "languages": [
+    "fileAssociations": [
       {
-        "id": "maestro",
-        "aliases": [
-          "Maestro",
-          "maestro"
-        ],
-        "extensions": [
-          ".maestro.yaml",
-          ".maestro.yml",
-          ".flow"
-        ],
-        "firstLine": "^appId:"
+        "pattern": "**/*.maestro.yaml",
+        "languageId": "yaml"
+      },
+      {
+        "pattern": "**/*.maestro.yml",
+        "languageId": "yaml"
+      },
+      {
+        "pattern": "**/*.flow",
+        "languageId": "yaml"
       }
     ],
     "snippets": [
       {
-        "language": "maestro",
+        "language": "yaml",
         "path": "./snippets/maestro.code-snippets.json"
       }
     ],
