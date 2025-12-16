@@ -1,0 +1,70 @@
+{
+  "name": "maestro-helper",
+  "displayName": "Maestro Helper",
+  "publisher": "avisek",
+  "description": "Maestro YAML autocomplete, validation & snippets",
+  "version": "0.0.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avisek123/maestro-helper.git"
+  },
+  "engines": {
+    "vscode": "^1.107.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onLanguage:maestro",
+    "onLanguage:yaml"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "maestro",
+        "aliases": [
+          "Maestro",
+          "maestro"
+        ],
+        "extensions": [
+          ".maestro.yaml",
+          ".maestro.yml",
+          ".flow"
+        ],
+        "firstLine": "^appId:"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "maestro",
+        "path": "./snippets/maestro.code-snippets.json"
+      }
+    ],
+    "yaml.schemas": {
+      "./schemas/maestro.schema.json": [
+        "**/*.maestro.yaml",
+        "**/*.maestro.yml",
+        "**/*.flow"
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.107.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.48.1",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
