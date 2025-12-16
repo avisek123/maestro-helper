@@ -3,7 +3,7 @@
   "displayName": "Maestro Helper",
   "publisher": "avisek",
   "description": "Maestro YAML autocomplete, validation & snippets",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/avisek123/maestro-helper.git"
