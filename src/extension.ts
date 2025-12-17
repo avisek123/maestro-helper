@@ -1,8 +1,7 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 import * as fs from "fs";
 import * as path from "path";
+import { validateMaestroFlow, ValidationLevel } from "./maestroValidator";
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -366,10 +365,64 @@ export function activate(context: vscode.ExtensionContext) {
     return null;
   }
 
+  // Diagnostics: Smart validation for Maestro flows
+  const diagnosticCollection =
+    vscode.languages.createDiagnosticCollection("maestro");
+
+  function refreshDiagnostics(document: vscode.TextDocument): void {
+    if (!isMaestroFile(document)) {
+      diagnosticCollection.delete(document.uri);
+      return;
+    }
+
+    const text = document.getText();
+    const results = validateMaestroFlow(text, document.uri);
+
+    const diagnostics = results.map((result) => {
+      const severity =
+        result.level === ValidationLevel.Error
+          ? vscode.DiagnosticSeverity.Error
+          : vscode.DiagnosticSeverity.Warning;
+
+      const diagnostic = new vscode.Diagnostic(
+        result.range,
+        result.message,
+        severity
+      );
+
+      diagnostic.source = "maestro-helper";
+      return diagnostic;
+    });
+
+    diagnosticCollection.set(document.uri, diagnostics);
+  }
+
+  // Validate already open document on activation
+  const activeEditor = vscode.window.activeTextEditor;
+  if (activeEditor && isMaestroFile(activeEditor.document)) {
+    refreshDiagnostics(activeEditor.document);
+  }
+
+  const openListener = vscode.workspace.onDidOpenTextDocument((document) => {
+    refreshDiagnostics(document);
+  });
+
+  const changeListener = vscode.workspace.onDidChangeTextDocument((event) => {
+    refreshDiagnostics(event.document);
+  });
+
+  const closeListener = vscode.workspace.onDidCloseTextDocument((document) => {
+    diagnosticCollection.delete(document.uri);
+  });
+
   context.subscriptions.push(
     disposable,
     hoverProviderYaml,
-    completionProviderYaml
+    completionProviderYaml,
+    diagnosticCollection,
+    openListener,
+    changeListener,
+    closeListener
   );
 }
 

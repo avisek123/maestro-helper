@@ -131,6 +131,12 @@ None at this time.
 
 ## Release Notes
 
+### 0.0.9
+
+- **Added**: Smart validation engine for Maestro flows with LEVEL 1 errors (e.g., missing selectors on `tapOn`, non-string `inputText`, unknown commands, missing `commands` in `conditional`, missing `runFlow` targets, and empty flows).
+- **Added**: LEVEL 2 best-practice warnings to catch flaky patterns (e.g., `assertVisible` without waits, duplicate sequential actions, unnamed screenshots).
+- **Improved**: Deep integration with VS Code diagnostics so errors and warnings are underlined in the editor and listed in the Problems panel for `.maestro.yaml`, `.maestro.yml`, and `.flow` files.
+
 ### 0.0.8
 
 - **Fixed**: Autocomplete now works when language mode is set to "YAML" (no need to manually switch)
